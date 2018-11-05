@@ -1,0 +1,98 @@
+* {
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0; }
+
+html {
+  font-family: 'Roboto', 'Raleway', sans-serif; }
+
+#title {
+  margin: 1em;
+  text-align: center; }
+
+#color {
+  background-color: #1485c7; }
+
+.wrapper {
+  margin: auto;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  text-align: center; }
+
+.wrap-progress {
+  margin: 1em auto; }
+  .wrap-progress .background,
+  .wrap-progress .background::before,
+  .wrap-progress .progress-180,
+  .wrap-progress .progress-360 {
+    width: 150px;
+    height: 150px; }
+  .wrap-progress .background {
+    position: relative;
+    border-radius: 50%;
+    background-color: rgba(20, 133, 199, 0.2);
+    text-align: center;
+    z-index: -1; }
+    .wrap-progress .background::before, .wrap-progress .background .text-percent {
+      position: absolute; }
+    .wrap-progress .background::before {
+      top: 0;
+      left: 0;
+      content: '';
+      padding: 19.5px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      border-radius: 50%;
+      background: white content-box;
+      z-index: 2; }
+    .wrap-progress .background .text-percent {
+      display: block;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      color: black;
+      font-size: 25px;
+      font-weight: 700;
+      z-index: 99; }
+  .wrap-progress .progress-180,
+  .wrap-progress .progress-360 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%; }
+  .wrap-progress .progress-180 {
+    /* Rotate full util 0-180 deg -> -90 0 90 deg */
+    background: -webkit-gradient(linear, right top, left top, color-stop(50%, transparent), color-stop(50%, #1485c7));
+    background: -webkit-linear-gradient(right, transparent 50%, #1485c7 50%);
+    background: -o-linear-gradient(right, transparent 50%, #1485c7 50%);
+    background: linear-gradient(-90deg, transparent 50%, #1485c7 50%);
+    /* This is visible part -> rest cut -> Top, rigth, bottom, left */
+    clip: rect(0px 150px 150px 75px);
+    /* This is visible part -> rest cut */
+    /*clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%); */ }
+  .wrap-progress .progress-360 {
+    /* Rotate full util 180-360 deg -> 90 180 270 deg */
+    background: -webkit-gradient(linear, left top, right top, color-stop(50%, transparent), color-stop(50%, #1485c7));
+    background: -webkit-linear-gradient(left, transparent 50%, #1485c7 50%);
+    background: -o-linear-gradient(left, transparent 50%, #1485c7 50%);
+    background: linear-gradient(90deg, transparent 50%, #1485c7 50%);
+    /* This is visible part -> rest cut -> Top, rigth, bottom, left */
+    clip: rect(0px 75px 150px 0px);
+    /* This is visible part -> rest cut */
+    /*clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%); */ }
+  .wrap-progress .text span {
+    display: block;
+    width: 150px;
+    text-align: center;
+    margin-top: .2em; }
+  .wrap-progress .text .text-skill {
+    color: black;
+    font-size: 20px;
+    font-family: 'Raleway'; }

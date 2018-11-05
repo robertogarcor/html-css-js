@@ -1,0 +1,132 @@
+
+// Main Styles CSS //
+
+//$color-main: rgb(225, 0, 100);
+$color-main: rgb(20, 133, 199);
+$color-background: rgba($color-main, 0.2);
+$color-progress: $color-main;
+$color-text: rgb(0, 0, 0);
+$color-mask-inside: rgb(255, 255, 255);
+$diameter: 150px;
+$padding-inside: $diameter * .13;
+$font-size-deg: $diameter / 6;
+$font-size-text: $diameter / 7.5;
+
+
+* {
+	padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+}
+
+html {
+	font-family: 'Roboto', 'Raleway', sans-serif;
+}
+
+#title {
+	margin: 1em;
+	text-align: center;
+}
+
+#color {
+	// only get color for change
+	background-color: $color-main;
+}
+
+.wrapper {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;    
+}
+
+.wrap-progress {
+	margin: 1em auto;	
+
+	.background {
+		position: relative;
+		width: $diameter;
+		height: $diameter;
+		border-radius: 50%;
+		background-color: $color-background;
+		text-align: center;
+		z-index: -1;
+
+		&::before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			content: '';
+			width: $diameter;
+			height: $diameter;
+			padding: $diameter * .13;
+			box-sizing: border-box;
+			border-radius: 50%;
+			background: $color-mask-inside content-box;
+			z-index: 2;
+		}
+
+		.text-percent {
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: $color-text;
+			font-size: $font-size-deg;
+			font-weight: 700;
+			z-index: 99;
+		}
+	}
+
+	.progress-180 {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: $diameter;
+		height: $diameter;
+		border-radius: 50%;
+		
+		/* Rotate full util 0-180 deg -> -90 0 90 deg */
+		background: linear-gradient(-90deg, transparent 50%, $color-progress 50%);
+		/* This is visible part -> rest cut -> Top, rigth, bottom, left */
+		clip: rect(0px $diameter $diameter $diameter/2);
+		/* This is visible part -> rest cut */
+		/*clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%); */	
+	}
+
+	.progress-360 {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: $diameter;
+		height: $diameter;
+		border-radius: 50%;
+		
+		/* Rotate full util 180-360 deg -> 90 180 270 deg */
+		background: linear-gradient(90deg, transparent 50%, $color-progress 50%);
+		
+		/* This is visible part -> rest cut -> Top, rigth, bottom, left */
+		clip: rect(0px $diameter/2 $diameter 0px);
+
+		/* This is visible part -> rest cut */
+		/*clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%); */	
+	}
+
+	.text {
+		span {
+			display: block;
+			width: $diameter;
+			text-align: center;
+			margin-top: .2em;
+		}
+
+		.text-skill {
+			color: $color-text;
+			font-size: $font-size-text;
+			font-family: 'Raleway';	
+		}
+	}
+}
+
