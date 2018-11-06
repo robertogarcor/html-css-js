@@ -9,13 +9,13 @@ window.onload = function(){
     var back = document.getElementById('color');
     var color = window.getComputedStyle(back, null).getPropertyValue('background-color'); 
     
+	let percent_deg_180 = [];
+    let percent_deg_360 = [];
+	
     for (let i = 0; i < progress_180.length; i++) {
 
         // Percent only part whole
         let percent = parseInt(document.getElementsByClassName('text-percent')[i].innerHTML.replace('%',''));
-
-        let percent_deg_180 = [];
-        let percent_deg_360 = [];
         
         if (percent <= 50) {
             percent_deg_180[i] = percent * 360 / 100 + 1; // (45% x 180º / 100)
